@@ -1,0 +1,58 @@
+seed: 1337
+
+track:
+  mode: "self"
+  obs: "self_min"
+  actions: "relative3"
+
+env:
+  width: 10
+  height: 10
+  start_length: 8
+  tick_cap: 200
+  stall_window: 60
+  fruit_enabled: false
+
+nn:
+  hidden1: 16
+  hidden2: 0
+  activation: "relu"
+
+ga:
+  population: 200
+  elites: 4
+  selection_pool: 80
+  tournament_k: 3
+  crossover_rate: 0.7
+  mutation_rate: 0.10
+  mutation_sigma: 0.06
+  reset_mutation_p: 0.01
+  reset_fraction: 0.10
+
+eval:
+  topk_multiseed: 50
+  multiseed_runs: 7
+  multiseed_base_seed: 1000
+  robustness_lambda: 0.25
+  benchmark_every: 50
+  benchmark_seeds: [2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009]
+  workers: 0
+
+logging:
+  every_gen_summary: true
+  topn_debug: 5
+  save_champion_every: 250
+  replay_every: 500
+  csv_path: "runs/self_run.csv"
+  json_path: "runs/self_run.jsonl"
+
+fitness:
+  mode: "self"
+  wall_penalty: 200
+  self_penalty: 600
+  stall_penalty: 100
+  fruit_reward: 5000
+  survival_cap: 40
+  survival_w: 2.0
+  progress_w: 10.0
+
